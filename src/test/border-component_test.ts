@@ -1,17 +1,9 @@
 import {
-  iit,
-  it,
-  ddescribe,
-  describe,
-  expect,
   async,
   inject,
-  beforeEachProviders
-} from '@angular/core/testing';
-import {
   TestComponentBuilder,
   ComponentFixture
-} from '@angular/compiler/testing';
+} from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { BorderComponent } from '../app/border-component';
 

@@ -1,20 +1,12 @@
 import {
-  iit,
-  it,
-  ddescribe,
-  describe,
-  expect,
   inject,
   async,
-  beforeEach,
-  beforeEachProviders,
+  addProviders,
   fakeAsync,
-  tick
-} from '@angular/core/testing';
-import {
+  tick,
   ComponentFixture,
   TestComponentBuilder
-} from '@angular/compiler/testing';
+} from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';
@@ -29,10 +21,12 @@ class MockLoginService extends LoginService {
 describe('greeting component', () => {
   var builder;
 
-  beforeEachProviders(() => [
-    provide(LoginService, {useClass: MockLoginService}),
-    UserService
-  ]);
+  beforeEach(() => {
+    addProviders([
+      provide(LoginService, { useClass: MockLoginService }),
+      UserService
+    ]);
+  });
 
   beforeEach(inject([TestComponentBuilder], (tcb) => {
     builder = tcb;
