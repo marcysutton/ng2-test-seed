@@ -68,6 +68,18 @@ describe('greeting component', () => {
       });
     }));
 
+    it('should accept pin (with whenStable)', async(() => {
+      var fixture = TestBed.createComponent(GreetingComponent);
+      fixture.detectChanges();
+      var compiled = fixture.debugElement.nativeElement;
+      compiled.querySelector('button').click();
+
+      fixture.whenStable().then(() => {
+        fixture.detectChanges();
+        expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
+      });
+    }));
+
     it('should accept pin (with fakeAsync)', fakeAsync(() => {
       var fixture = TestBed.createComponent(GreetingComponent);
 
