@@ -1,4 +1,4 @@
-import { inject, async, addProviders, fakeAsync, tick } from '@angular/core/testing';
+import { inject, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';
@@ -7,7 +7,9 @@ import { LoginService } from '../app/login-service';
 
 describe('user service', () => {
   beforeEach(() => {
-    addProviders([LoginService, UserService]);
+    TestBed.configureTestingModule({
+      providers: [LoginService, UserService]
+    });
   });
 
   it('should validate pins', inject([UserService], (service) => {
@@ -47,7 +49,9 @@ class MockLoginService extends LoginService {
 
 describe('with mocked login', () => {
   beforeEach(() => {
-    addProviders([provide(LoginService, { useClass: MockLoginService }), UserService]);
+    TestBed.configureTestingModule({
+      providers: [provide(LoginService, { useClass: MockLoginService }), UserService]
+    });
   });
 
   it('should greet', async(inject([UserService], (service) => {
@@ -59,7 +63,9 @@ describe('with mocked login', () => {
 
 describe('with fake async', () => {
   beforeEach(() => {
-    addProviders([LoginService, UserService]);
+    TestBed.configureTestingModule({
+      providers: [LoginService, UserService]
+    });
   });
 
   it('should greet (with fakeAsync)', fakeAsync(inject([UserService], (service) => {
