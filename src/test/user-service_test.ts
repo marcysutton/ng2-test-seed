@@ -1,5 +1,4 @@
 import { inject, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { provide } from '@angular/core';
 import { UserService } from '../app/user-service';
 import { LoginService } from '../app/login-service';
 
@@ -31,14 +30,14 @@ describe('user service', () => {
     service.getGreeting().then((greeting) => {
       expect(greeting).toEqual('Login failure!');
     });
-  })), 3000);
+  })));
 
   it('should greet when pin is right', async(inject([UserService], (service) => {
     service.pin = 2015;
     service.getGreeting().then((greeting) => {
       expect(greeting).toEqual('Welcome!');
     });
-  })), 3000);
+  })));
 });
 
 class MockLoginService extends LoginService {
@@ -50,7 +49,7 @@ class MockLoginService extends LoginService {
 describe('with mocked login', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provide(LoginService, { useClass: MockLoginService }), UserService]
+      providers: [{provide: LoginService, useClass: MockLoginService}, UserService]
     });
   });
 
