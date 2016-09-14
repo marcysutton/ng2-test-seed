@@ -51,6 +51,7 @@ System.config(
 
     // other libraries
     'rxjs': 'npm:rxjs',
+    'axe-core': 'npm:axe-core/axe.js'
   },
   packages: {
     'app': {

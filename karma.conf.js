@@ -27,6 +27,7 @@ module.exports = function(config) {
       { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
       { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
 
+      { pattern: 'node_modules/axe-core/axe.js', included: false, watched: false},
 
       {pattern: 'karma-test-shim.js', included: true, watched: true},
       {pattern: 'built/test/matchers.js', included: true, watched: true},
